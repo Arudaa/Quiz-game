@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+      <h1>Random Quiz Generator</h1>
+      <div id="quoteDisplay" class="quote-display">Click the button to generate a random Quiz!</div>
+      <button id="generateQuoteBtn">Generate quiz</button>
+      <div class="answer">
+        <input type="text" id="answerInput" placeholder="Write your answer">
+        <button id="answerBtn">Answer</button>
+        <div id="correctness"></div>
+      </div>
+      <script>
+        const answerInput = document.getElementById('answerInput');
+        const answerBtn = document.getElementById('answerBtn');
+        const correctness = document.getElementById('correctness');
+
+        answerBtn.addEventListener('click', () => {
+          const answer = answerInput.value.trim().toLowerCase();
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const correctAnswer = quotes[randomIndex].toLowerCase();
+
+          if (answer === correctAnswer) {
+            correctness.textContent = 'Correct!';
+          } else {
+            correctness.textContent = 'False!';
+          }
+
+          answerInput.value = '';
+        });
+      </script>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
